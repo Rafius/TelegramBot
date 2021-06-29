@@ -79,12 +79,11 @@ const getGrades = () => {
 
 
 const getGradesTimeout = () => {
-
-  getGrades()
   setInterval(()=>{
     getGrades()
   }, seconds * 1000);
 }
 
 //getSession();
+getGrades()
 getGradesTimeout()
