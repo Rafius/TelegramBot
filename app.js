@@ -1,7 +1,9 @@
 const axios = require("axios");
 const telegram = require("./bot");
+require('dotenv').config({path:'.env'})
 
 const url = "https://cv.uoc.edu/webapps/cas/login";
+const seconds = 60
 let sessionId
 const uri_data = map => {
   var str = "";
@@ -41,6 +43,7 @@ const getSession = () => {
     execution,
     _eventId: "submit"
   }
+  console.log(data)
   axios
   .post(url,
     uri_data(data),{
@@ -55,22 +58,33 @@ const getSession = () => {
 }
 
 const getGrades = () => {
-  const urlGrades = `https://campus.uoc.edu/gateway/rest/expedient//notes?jsonpCallback=jQuery1102017702908127924988_1624966386647&version=1&session=${sessionId}&idp=&lang=es&JSONObject=%7B%22version%22%3A%221%22%2C%22session%22%3A%228e507cc6393ac342c69c23b428fb74d2d7605c4c0b206f626178a3e2e83a921549319f84a42624269d3ec32084b59ee41c950110dea1a01400b57e901f07f1e4%22%2C%22idp%22%3A%22%22%2C%22lang%22%3A%22es%22%2C%22anyAcademic%22%3A%2220202%22%7D&_=1624966386648"`
 
+  const urlGrades = "https://campus.uoc.edu/gateway/rest/expedient//notes?jsonpCallback=jQuery110208715038080389803_1624980614657&version=1&session=3e7aacc8198b039f56c1932b588bf40717519c8e2b416f83d15063f438c082efc9276fb0f462a4a7fdf203cb548c0e9f8c8331f85e5fc0108040eea45f7131e6&idp=&lang=es&JSONObject=%7B%22version%22%3A%221%22%2C%22session%22%3A%223e7aacc8198b039f56c1932b588bf40717519c8e2b416f83d15063f438c082efc9276fb0f462a4a7fdf203cb548c0e9f8c8331f85e5fc0108040eea45f7131e6%22%2C%22idp%22%3A%22%22%2C%22lang%22%3A%22es%22%2C%22anyAcademic%22%3A%2220202%22%7D&_=1624980614658"
   axios
   .get(urlGrades)
   .then(response => {
     grades = JSON.parse(response.data.split("(")[1].slice(0, -2))
     grades.cursos[0].assignatures.forEach((subjects) => {
-      if(subjects.notaFinal != "1-"){
-        telegram(msn= `${subjects.descripcion}: ${subjects.notaFinal}`);
+      console.log(`${subjects.descripcion}: ${subjects.notaFinal}`)
+      if(subjects.notaFinal != "-"){
+        telegram(`${subjects.descripcion}: ${subjects.notaFinal}`);
       }
     })
+    console.log("-------------------------------------------------------------------------------------------------------------------")
   })
   .catch(error => {
-    console.error(error);
+    console.log(error);
   });
 }
 
+
+const getGradesTimeout = () => {
+
+  getGrades()
+  setInterval(()=>{
+    getGrades()
+  }, seconds * 1000);
+}
+
 //getSession();
-getGrades();
+getGradesTimeout()
