@@ -6,7 +6,6 @@ Then you need to create a .env file to set all the variables
 
 USERNAME="USERNAME"
 PASSWORD="PASSWORD"
-
 TOKEN = "1671325852:AAH0kfCsA2qDxHoczTA7uzXmM-qvHNp7Up8"
 CHAT_ID = "CHAT_ID"
 URL = go to the personal space and look for the notes request, and copy it here
