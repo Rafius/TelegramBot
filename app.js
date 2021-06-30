@@ -58,16 +58,28 @@ const getSession = () => {
 }
 
 const getGrades = () => {
+  const skipSubject = []
+  const gradesDictionary = {
+    "M": "Matrícula de Honor",
+    "EX": "Sobresaliente",
+    "NO": "Notable",
+    "A": "Aprobado",
+    "SU": "Suspenso",
+    "-": ""
+  }
 
-  const urlGrades = "https://campus.uoc.edu/gateway/rest/expedient//notes?jsonpCallback=jQuery110208715038080389803_1624980614657&version=1&session=3e7aacc8198b039f56c1932b588bf40717519c8e2b416f83d15063f438c082efc9276fb0f462a4a7fdf203cb548c0e9f8c8331f85e5fc0108040eea45f7131e6&idp=&lang=es&JSONObject=%7B%22version%22%3A%221%22%2C%22session%22%3A%223e7aacc8198b039f56c1932b588bf40717519c8e2b416f83d15063f438c082efc9276fb0f462a4a7fdf203cb548c0e9f8c8331f85e5fc0108040eea45f7131e6%22%2C%22idp%22%3A%22%22%2C%22lang%22%3A%22es%22%2C%22anyAcademic%22%3A%2220202%22%7D&_=1624980614658"
+  const urlGrades = process.env.URL
+
   axios
   .get(urlGrades)
   .then(response => {
     grades = JSON.parse(response.data.split("(")[1].slice(0, -2))
     grades.cursos[0].assignatures.forEach((subjects) => {
-      console.log(`${subjects.descripcion}: ${subjects.notaFinal}`)
-      if(subjects.notaFinal != "-"){
-        telegram(`${subjects.descripcion}: ${subjects.notaFinal}`);
+      if(!skipSubject.includes(subjects.descripcion)){
+        console.log(`${subjects.descripcion}: ${gradesDictionary[subjects.notaFinal]}`)
+        if(subjects.notaFinal != "-"){
+          telegram(`${subjects.descripcion}: ${gradesDictionary[subjects.notaFinal.toUpperCase()]}`);
+        }
       }
     })
     console.log("-------------------------------------------------------------------------------------------------------------------")
