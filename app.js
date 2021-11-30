@@ -1,10 +1,10 @@
 const axios = require("axios");
 const telegram = require("./bot");
-require('dotenv').config({path:'.env'})
+require('dotenv').config({ path: '.env' });
 
 const url = "https://cv.uoc.edu/webapps/cas/login";
-const seconds = 60
-let sessionId
+const seconds = 60;
+let sessionId;
 const uri_data = map => {
   var str = "";
   for (var v in map) {
@@ -14,7 +14,7 @@ const uri_data = map => {
 };
 
 const getLt = () => {
-  let lt, execution
+  let lt, execution;
   axios
     .get(url)
     .then(response => {
@@ -26,7 +26,7 @@ const getLt = () => {
     .catch(error => {
       console.error(error);
     });
-  return { lt, execution }
+  return { lt, execution };
 };
 
 const parseSession = response => {
@@ -35,30 +35,30 @@ const parseSession = response => {
 };
 
 const getSession = () => {
-  const { lt, execution } = getLt()
-  const data =  {
+  const { lt, execution } = getLt();
+  const data = {
     username: process.env.username,
     password: process.env.password,
     lt,
     execution,
     _eventId: "submit"
-  }
-  console.log(data)
+  };
+  console.log(data);
   axios
-  .post(url,
-    uri_data(data),{
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Accept: "*/*"
-    }
-  })
-  .then(response => {
-    parseSession(response);
-  });
-}
+    .post(url,
+      uri_data(data), {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Accept: "*/*"
+      }
+    })
+    .then(response => {
+      parseSession(response);
+    });
+};
 
 const getGrades = () => {
-  const skipSubject = []
+  const skipSubject = [];
   const gradesDictionary = {
     "M": "Matrícula de Honor",
     "EX": "Sobresaliente",
@@ -66,36 +66,37 @@ const getGrades = () => {
     "A": "Aprobado",
     "SU": "Suspenso",
     "-": ""
-  }
+  };
 
-  const urlGrades = process.env.URL
+  const urlGrades = process.env.URL;
 
   axios
-  .get(urlGrades)
-  .then(response => {
-    grades = JSON.parse(response.data.split("(")[1].slice(0, -2))
-    grades.cursos[0].assignatures.forEach((subjects) => {
-      if(!skipSubject.includes(subjects.descripcion)){
-        console.log(`${subjects.descripcion}: ${gradesDictionary[subjects.notaFinal]}`)
-        if(subjects.notaFinal != "-"){
-          telegram(`${subjects.descripcion}: ${gradesDictionary[subjects.notaFinal.toUpperCase()]}`);
+    .get(urlGrades)
+    .then(response => {
+      console.log(response.data.split("(").slice(1).join("").slice(0, -2));
+      grades = JSON.parse(response.data.split("(").slice(1).join("").slice(0, -2));
+      grades.cursos[0].assignatures.forEach((subjects) => {
+        if (!skipSubject.includes(subjects.descripcion)) {
+          console.log(`${subjects.descripcion}: ${gradesDictionary[subjects.notaFinal]}`);
+          if (subjects.notaFinal != "-") {
+            telegram(`${subjects.descripcion}: ${gradesDictionary[subjects.notaFinal.toUpperCase()]}`);
+          }
         }
-      }
+      });
+      console.log("-------------------------------------------------------------------------------------------------------------------");
     })
-    console.log("-------------------------------------------------------------------------------------------------------------------")
-  })
-  .catch(error => {
-    console.log(error);
-  });
-}
+    .catch(error => {
+      console.log(error);
+    });
+};
 
 
 const getGradesTimeout = () => {
-  setInterval(()=>{
-    getGrades()
+  setInterval(() => {
+    getGrades();
   }, seconds * 1000);
-}
+};
 
 //getSession();
-getGrades()
-getGradesTimeout()
+getGrades();
+getGradesTimeout();
