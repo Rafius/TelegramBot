@@ -8,6 +8,7 @@ async function telegram(text) {
   const parse_mode = 'MarkdownV2';
   const endPoint = 'sendMessage';
 
+  //fetch url 
   const url = new URL(`${baseURL}${token}/${endPoint}`);
   const params = {
     chat_id,
@@ -19,5 +20,7 @@ async function telegram(text) {
 
   return await (await fetch(url)).json().catch(error => error);
 }
+
+
 
 module.exports = telegram;

@@ -1,17 +1,17 @@
 const axios = require("axios");
 const telegram = require("./bot");
-require('dotenv').config({ path: '.env' });
+require("dotenv").config({ path: ".env" });
 
-const seconds = 60;
+const seconds = 2;
 
 const getGrades = () => {
   const skipSubject = [];
   const gradesDictionary = {
-    "M": "Matrícula de Honor",
-    "EX": "Sobresaliente",
-    "NO": "Notable",
-    "A": "Aprobado",
-    "SU": "Suspenso",
+    M: "Matrícula de Honor",
+    EX: "Sobresaliente",
+    NO: "Notable",
+    A: "Aprobado",
+    SU: "Suspenso",
     "-": ""
   };
 
@@ -19,20 +19,30 @@ const getGrades = () => {
 
   axios
     .get(urlGrades)
-    .then(response => {
+    .then((response) => {
       console.log(response.data.split("(").slice(1).join("").slice(0, -2));
-      grades = JSON.parse(response.data.split("(").slice(1).join("").slice(0, -2));
+      grades = JSON.parse(
+        response.data.split("(").slice(1).join("").slice(0, -2)
+      );
       grades.cursos[0].assignatures.forEach((subjects) => {
         if (!skipSubject.includes(subjects.descripcion)) {
-          console.log(`${subjects.descripcion}: ${gradesDictionary[subjects.notaFinal]}`);
+          console.log(
+            `${subjects.descripcion}: ${gradesDictionary[subjects.notaFinal]}`
+          );
           if (subjects.notaFinal != "-") {
-            telegram(`${subjects.descripcion}: ${gradesDictionary[subjects.notaFinal.toUpperCase()]}`);
+            telegram(
+              `${subjects.descripcion}: ${
+                gradesDictionary[subjects.notaFinal.toUpperCase()]
+              }`
+            );
           }
         }
       });
-      console.log("-------------------------------------------------------------------------------------------------------------------");
+      console.log(
+        "-------------------------------------------------------------------------------------------------------------------"
+      );
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -44,4 +54,4 @@ const getGradesTimeout = () => {
 };
 
 //getGrades();
-//getGradesTimeout();
+getGradesTimeout();
