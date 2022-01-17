@@ -7,7 +7,8 @@
     "playwright": "^1.17.0"
   },
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "e2e": "nodemon index.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

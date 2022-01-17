@@ -20,21 +20,18 @@ const getGrades = () => {
   axios
     .get(urlGrades)
     .then((response) => {
-      console.log(response.data.split("(").slice(1).join("").slice(0, -2));
+      //console.log(response.data.split("(").slice(1).join("").slice(0, -2));
       grades = JSON.parse(
         response.data.split("(").slice(1).join("").slice(0, -2)
       );
       grades.cursos[0].assignatures.forEach((subjects) => {
         if (!skipSubject.includes(subjects.descripcion)) {
-          console.log(
-            `${subjects.descripcion}: ${gradesDictionary[subjects.notaFinal]}`
-          );
+          const subjectDescription = `${subjects.descripcion}: ${
+            gradesDictionary[subjects.notaFinal]
+          }`;
+          console.log(subjectDescription);
           if (subjects.notaFinal != "-") {
-            telegram(
-              `${subjects.descripcion}: ${
-                gradesDictionary[subjects.notaFinal.toUpperCase()]
-              }`
-            );
+            telegram(subjectDescription);
           }
         }
       });
