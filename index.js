@@ -28,8 +28,14 @@ const url = "https://www.uoc.edu/portal/es/index_es.html";
   await page.fill("#password", password);
   await page.click("button#submitButton");
 
-  await page.waitForTimeout(3000);
-  await page.click("#dock_nav > li:nth-child(3)");
+  await page.waitForTimeout(2000);
 
+  await page.click("#dock_nav > li:nth-child(3) > button");
+
+  /*  await page.goto(
+    "https://campus.uoc.edu/estudiant/espai-personal/es/index_estudiant.html",
+    { waitUntil: "networkidle" }
+  );
+*/
   //await browser.close();
 })();
