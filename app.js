@@ -2,7 +2,7 @@ const axios = require("axios");
 const telegram = require("./bot");
 require("dotenv").config({ path: ".env" });
 
-const seconds = 2;
+const seconds = 60;
 
 const getGrades = () => {
   const skipSubject = [];
@@ -24,6 +24,13 @@ const getGrades = () => {
       grades = JSON.parse(
         response.data.split("(").slice(1).join("").slice(0, -2)
       );
+      const date = new Date();
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+
+      console.log(`${hours}:${minutes}:${seconds}`);
+
       grades.cursos[0].assignatures.forEach((subjects) => {
         if (!skipSubject.includes(subjects.descripcion)) {
           const subjectDescription = `${subjects.descripcion}: ${
@@ -50,5 +57,5 @@ const getGradesTimeout = () => {
   }, seconds * 1000);
 };
 
-//getGrades();
+getGrades();
 getGradesTimeout();
