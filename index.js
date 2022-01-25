@@ -30,12 +30,15 @@ const url = "https://www.uoc.edu/portal/es/index_es.html";
 
   await page.waitForTimeout(2000);
 
-  await page.click("#dock_nav > li:nth-child(3) > button");
+  //Get element by text
+  const element = await page.locator('text="Espacio personal"');
 
-  /*  await page.goto(
-    "https://campus.uoc.edu/estudiant/espai-personal/es/index_estudiant.html",
-    { waitUntil: "networkidle" }
-  );
-*/
+  element.click();
+  console.log(element);
+  // page.route("**", (route) => {
+  //   const request = route.request();
+  //   console.log(request.url(), JSON.stringify(request.headers()));
+  //   return route.continue();
+  // });
   //await browser.close();
 })();
