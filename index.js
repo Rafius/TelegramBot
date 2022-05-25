@@ -4,7 +4,7 @@ const { chromium } = require("playwright-chromium");
 /*const url =
   "https://cv.uoc.edu/webapps/cas/login?service=https%3A%2F%2Fid-provider.uoc.edu%2Fidp%2Fauthn%2Fexternal%2Flogin.jsp%3Fconversation%3De1s1&renew=true";
 */
-const url = "https://www.uoc.edu/portal/es/index_es.html";
+const url = "https://www.idealista.com/usuario/favoritos/";
 
 (async () => {
   const browser = await chromium.launch({
