@@ -17,8 +17,7 @@
     "start": "nodemon app.js",
     "e2e": "nodemon index.js",
     "idealista": "nodemon idealista",
-    "data": "nodemon idealista/data.js",
-    "fotocasa": "nodemon fotocasa"
+    "data": "nodemon idealista/data.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

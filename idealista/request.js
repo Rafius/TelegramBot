@@ -1,6 +1,6 @@
 let houses = [{}];
 
-const links = document.querySelectorAll(".item-link");
+let links = document.querySelectorAll(".item-link");
 
 const prices = document.querySelectorAll(".item-price");
 
@@ -10,14 +10,21 @@ const descriptions = document.querySelectorAll(".item-description");
 
 const pricesDown = document.querySelectorAll(".pricedown");
 
+const linksFiltered = [];
+
 for (let i = 0; i < links.length; i++) {
   const title = links[i].innerText;
   if (!(prices[i] || details[i] || descriptions[i])) continue;
   if (title.includes("Comparar")) continue;
+  linksFiltered.push(links[i]);
+}
 
+links = linksFiltered;
+
+for (let i = 0; i < links.length; i++) {
   houses.push({
     id: parseInt(links[i].href.split("/")[4]),
-    title,
+    title: links[i].innerText,
     link: links[i].href,
     price: {
       date: new Date().toLocaleDateString(),
@@ -25,7 +32,7 @@ for (let i = 0; i < links.length; i++) {
     },
     detail: details[i].innerText,
     description: descriptions[i].textContent,
-    meters: details[i].innerText.split("m²")[0].slice(-3).trim()
+    meters: details[i].innerText.split("m²")[0].slice(-4).trim()
   });
 }
 

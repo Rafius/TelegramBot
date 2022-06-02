@@ -22,13 +22,22 @@ const allHouses = Object.values(housesGroupById).map((houses) => {
   return house;
 });
 
-const housesWithPriceChanged = allHouses.filter(
-  (house) => Object.keys(house.price).length > 1
-);
+const housesWithPriceChanged = allHouses
+  .filter((house) => Object.keys(house.price).length > 1)
+  .map((item) => {
+    const { price } = item;
+    console.log(price[0].price, price[price.length - 1].price);
+    return {
+      ...item,
+      priceChanges: `${(price[0].price - price[price.length - 1].price).toFixed(
+        2
+      )}k €`
+    };
+  });
 
 console.log(
-  "Casas que han cambiado el precio",
-  JSON.stringify(housesWithPriceChanged, null, "\t")
+  JSON.stringify(housesWithPriceChanged, null, 2),
+  `Casas que han cambiado el precio: ${housesWithPriceChanged.length}`
 );
 
 const getHousesPricePerMeter = (house) => {
