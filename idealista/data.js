@@ -26,14 +26,14 @@ const housesWithPriceChanged = allHouses
   .filter((house) => Object.keys(house.price).length > 1)
   .map((item) => {
     const { price } = item;
-    console.log(price[0].price, price[price.length - 1].price);
     return {
       ...item,
       priceChanges: `${(price[0].price - price[price.length - 1].price).toFixed(
         2
       )}k €`
     };
-  });
+  })
+  .sort((a, b) => a.priceChanges - b.priceChanges);
 
 console.log(
   JSON.stringify(housesWithPriceChanged, null, 2),

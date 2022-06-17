@@ -17,7 +17,8 @@
     "start": "nodemon app.js",
     "e2e": "nodemon index.js",
     "idealista": "nodemon idealista",
-    "data": "nodemon idealista/data.js"
+    "data": "nodemon idealista/data.js",
+    "calendar": "nodemon calendar/index.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

@@ -15,8 +15,8 @@ const getGrades = () => {
     "-": ""
   };
 
-  const urlGrades = process.env.URL;
-
+  const urlGrades =
+    "https://campus.uoc.edu/gateway/rest/expedient//notes?jsonpCallback=jQuery110205835194528568246_1655465515065&version=1&session=0eb2e88bd224cdcf079e1b3130d78d809d2acfde69d0b72edda89a4c0d8c180b844f571effae500299f61e5e831e20523379545f90872b31cba9ec33bdd57fc4&idp=&lang=es&anyAcademic=20212&JSONObject=%7B%22version%22%3A%221%22%2C%22session%22%3A%220eb2e88bd224cdcf079e1b3130d78d809d2acfde69d0b72edda89a4c0d8c180b844f571effae500299f61e5e831e20523379545f90872b31cba9ec33bdd57fc4%22%2C%22idp%22%3A%22%22%2C%22lang%22%3A%22es%22%2C%22anyAcademic%22%3A%2220212%22%7D&_=1655465515066";
   axios
     .get(urlGrades)
     .then((response) => {
