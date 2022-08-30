@@ -1,4 +1,4 @@
-const housesFile = require("./houses.json");
+const housesFile = require("../test/src/houses.json");
 
 const housesGroupById = housesFile.reduce((acc, house) => {
   (acc[house.id] = acc[house.id] || []).push(house);

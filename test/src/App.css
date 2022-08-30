@@ -1,7 +1,9 @@
 .container {
   display: flex;
-  flex-direction: column;
-  text-decoration: none;
+  flex-wrap: wrap;
+}
+
+a {
   color: inherit;
 }
 
@@ -9,4 +11,6 @@ ul li {
   list-style: none;
   position: relative;
   padding: 3px 0 2px 25px;
+  flex: 1 0 33%;
+  width: 600px;
 }

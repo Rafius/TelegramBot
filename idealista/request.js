@@ -46,5 +46,5 @@ fetch("http://localhost/saveHouses", {
     Accept: "application/json",
     "Content-Type": "application/json;charset=UTF-8"
   },
-  body: JSON.stringify({ houses })
+  body: JSON.stringify(houses)
 }).then((res) => res.json());

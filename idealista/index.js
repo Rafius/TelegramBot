@@ -5,7 +5,7 @@ const app = express();
 const cors = require("cors");
 const fs = require("fs");
 const jsonParser = bodyParser.json();
-const housesFile = require("./houses.json");
+const housesFile = require("../test/src/houses.json");
 
 app.use(cors());
 const server = app.listen(80, function () {
@@ -15,17 +15,44 @@ const server = app.listen(80, function () {
 });
 
 app.post("/saveHouses", jsonParser, async (req, res) => {
-  console.log(req.body[0]);
+  console.log(req.body);
   saveHouses(req.body);
   res.send({ status: "Success" });
 });
 
-const saveHouses = (houses) =>
-  fs.writeFile(
-    "../test/src/houses.json",
-    JSON.stringify([...housesFile, ...Object.values(houses)].flat()),
-    (err) => {
-      if (err) throw err;
-      console.log("Houses saved");
-    }
-  );
+const saveHouses = (houses) => {
+  let newHouses = [...houses, ...housesFile];
+
+  const housesGroupById = newHouses.reduce((acc, house) => {
+    (acc[house.id] = acc[house.id] || []).push(house);
+    return acc;
+  }, {});
+
+  // Remove sold houses
+
+  newHouses = Object.values(housesGroupById)
+    .map((houses) => {
+      const houseIsOnSale =
+        houses.at(-1).price.date === new Date().toLocaleDateString();
+
+      if (!houseIsOnSale) return null;
+
+      const house = houses[0];
+
+      const prices = houses.map((house) => house.price.price);
+
+      house.price = houses
+        .filter(({ price }, index) => {
+          return !prices.includes(price.price, index + 1);
+        })
+        .map((item) => item.price);
+
+      return house;
+    })
+    .filter((houses) => houses);
+
+  fs.writeFile("./test/src/houses.json", JSON.stringify(newHouses), (err) => {
+    if (err) throw err;
+    console.log("Houses saved");
+  });
+};
