@@ -8,7 +8,7 @@ const details = document.querySelectorAll(".item-detail-char");
 
 const descriptions = document.querySelectorAll(".item-description");
 
-const pricesDown = document.querySelectorAll(".pricedown");
+const images = document.querySelectorAll(".mask");
 
 const linksFiltered = [];
 
@@ -32,7 +32,8 @@ for (let i = 0; i < links.length; i++) {
     },
     detail: details[i].innerText,
     description: descriptions[i].textContent,
-    meters: details[i].innerText.split("m²")[0].slice(-4).trim()
+    meters: details[i].innerText.split("m²")[0].slice(-4).trim(),
+    image: images[i].getElementsByTagName("img")[0].src
   });
 }
 

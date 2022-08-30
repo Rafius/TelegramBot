@@ -5,7 +5,7 @@ const app = express();
 const cors = require("cors");
 const fs = require("fs");
 const jsonParser = bodyParser.json();
-const housesFile = require("../test/src/houses.json");
+const housesFile = require("../front/src/houses.json");
 
 app.use(cors());
 const server = app.listen(80, function () {
@@ -51,7 +51,7 @@ const saveHouses = (houses) => {
     })
     .filter((houses) => houses);
 
-  fs.writeFile("./test/src/houses.json", JSON.stringify(newHouses), (err) => {
+  fs.writeFile("./front/src/houses.json", JSON.stringify(newHouses), (err) => {
     if (err) throw err;
     console.log("Houses saved");
   });

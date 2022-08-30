@@ -13,7 +13,16 @@ function App() {
   return (
     <div className="container">
       {housesWithPriceChanged.map(
-        ({ id, link, meters, price, priceChanges, title }) => {
+        ({
+          description,
+          id,
+          image,
+          link,
+          meters,
+          price,
+          priceChanges,
+          title
+        }) => {
           const data = price.map(({ date, price }) => {
             return {
               name: date,
@@ -24,11 +33,12 @@ function App() {
           return (
             <ul key={id}>
               <li>
-                <a href={link}> {title}</a>
+                <a href={link}>
+                  {title}, {meters} m²
+                  <img src={image} alt={description} />
+                </a>
               </li>
-              <li>
-                Precio: {price.at(-1).price}, {meters} m²
-              </li>
+              <li>Precio: {price.at(-1).price}</li>
               <li>
                 Precio por m²: {parseInt((price.at(-1).price * 1000) / meters)}€
               </li>
@@ -46,9 +56,9 @@ function App() {
                 margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
               >
                 <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-                <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                <CartesianGrid stroke="#ccc" />
                 <XAxis dataKey="name" />
-                <YAxis dateKey="date" />
+                <YAxis dateKey="date" domain={[100, 600]} />
                 <Tooltip />
               </LineChart>
             </ul>
