@@ -22,7 +22,7 @@ app.post("/saveHouses", jsonParser, async (req, res) => {
 
 const saveHouses = (houses) =>
   fs.writeFile(
-    "idealista/houses.json",
+    "../test/src/houses.json",
     JSON.stringify([...housesFile, ...Object.values(houses)].flat()),
     (err) => {
       if (err) throw err;
