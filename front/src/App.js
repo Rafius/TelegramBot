@@ -17,6 +17,7 @@ function App() {
           description,
           id,
           image,
+          hasGarage,
           link,
           meters,
           price,
@@ -48,7 +49,7 @@ function App() {
                 {parseInt((price.at(0).price * 1000) / meters)}€
               </li>
               <li>El precio ha bajado: {priceChanges}k €</li>
-
+              <li>{!hasGarage && "No"} Tiene garaje </li>
               <LineChart
                 width={600}
                 height={300}

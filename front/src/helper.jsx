@@ -1,4 +1,4 @@
-import houses from "./houses";
+import houses from "./houses.json";
 
 export const housesWithPriceChanged = houses
   .filter((house) => Object.keys(house.price).length)

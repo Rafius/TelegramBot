@@ -1,14 +1,11 @@
 let houses = [{}];
 
 let links = document.querySelectorAll(".item-link");
-
 const prices = document.querySelectorAll(".item-price");
-
 const details = document.querySelectorAll(".item-detail-char");
-
 const descriptions = document.querySelectorAll(".item-description");
-
 const images = document.querySelectorAll(".mask");
+const itemContainer = document.querySelectorAll(".item-info-container");
 
 const linksFiltered = [];
 
@@ -26,14 +23,19 @@ for (let i = 0; i < links.length; i++) {
     id: parseInt(links[i].href.split("/")[4]),
     title: links[i].innerText,
     link: links[i].href,
-    price: {
-      date: new Date().toLocaleDateString(),
-      price: prices[i].innerText.slice(0, -1)
-    },
+    price: [
+      {
+        date: new Date().toLocaleDateString(),
+        price: prices[i].innerText.slice(0, -1)
+      }
+    ],
     detail: details[i].innerText,
     description: descriptions[i].textContent,
     meters: details[i].innerText.split("m²")[0].slice(-4).trim(),
-    image: images[i].getElementsByTagName("img")[0].src
+    image: images[i].getElementsByTagName("img")[0].src,
+    hasGarage: Boolean(
+      itemContainer[i].getElementsByClassName("item-parking")[0]
+    )
   });
 }
 

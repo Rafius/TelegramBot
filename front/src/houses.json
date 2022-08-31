@@ -7,7 +7,8 @@
     "detail": "5 hab. 225 m²",
     "description": "\nChalet construido desde 2006, construcción moderna, situada en la urbanización de can turu, rodeada y con vistas a la naturaleza\nEsta ca...\n",
     "meters": "225",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/aa/6e/6e/970947698.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/aa/6e/6e/970947698.jpg",
+    "hasGarage": true
   },
   {
     "id": 95871505,
@@ -17,7 +18,8 @@
     "detail": "3 hab. 227 m²",
     "description": "\nGROCASA GRUP IMMOBILIARI te presenta esta magnifica casa 4 vientos en Terrassa…\nVivienda de 227m² construidos, distribuidos en tres plan...\n",
     "meters": "227",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/d4/47/a0/930461244.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/d4/47/a0/930461244.jpg",
+    "hasGarage": false
   },
   {
     "id": 96531119,
@@ -27,7 +29,8 @@
     "detail": "4 hab. 243 m²",
     "description": "\nEgarlex le ofrece en exclusiva esta magnifica torre seminueva de 243m2;\nDispone de 4 habitaciones, 2 cocinas, 3 baños, 2 comedores, 2 bal...\n",
     "meters": "243",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/1c/fc/07/949894602.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/1c/fc/07/949894602.jpg",
+    "hasGarage": true
   },
   {
     "id": 96643864,
@@ -43,7 +46,8 @@
     "detail": "3 hab. 150 m²",
     "description": "\nCasa a cuatro vientos en can palet de vista alegre con todo lo necesario para entrar a vivir\nZona muy tranquila.\n",
     "meters": "150",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/d8/33/89/952441553.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/d8/33/89/952441553.jpg",
+    "hasGarage": true
   },
   {
     "id": 96685451,
@@ -57,7 +61,8 @@
     "detail": "2 hab. 213 m²",
     "description": "\nMaravillosa casa a 4 vientos en Can Palet de Vista Alegre.\nDhabitat comercializa espectacular vivienda de 213 m2 completamente reformada...\n",
     "meters": "213",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/b4/67/f8/953647351.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/b4/67/f8/953647351.jpg",
+    "hasGarage": true
   },
   {
     "id": 96696566,
@@ -70,7 +75,8 @@
     "detail": "2 hab. 425 m²",
     "description": "\nGRAN CHALET CON PISCINA Y VISTAS MARAVILLOSAS\nChalet a 4 vientos con piscina, en urbanización tranquila, con vistas a Montserrat y la Mo...\n",
     "meters": "425",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/a0/10/25/953953884.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/a0/10/25/953953884.jpg",
+    "hasGarage": true
   },
   {
     "id": 96774314,
@@ -83,7 +89,8 @@
     "detail": "3 hab. 135 m² Planta 1ª exterior sin ascensor",
     "description": "\nVivienda en exclusiva de Gesfinques-M tipo Triplex de 124 m2, con Piscina\nAccedemos por Planta Baja con puerta independiente a una vivien...\n",
     "meters": "135",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/b4/96/b8/989598288.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/b4/96/b8/989598288.jpg",
+    "hasGarage": true
   },
   {
     "id": 96906292,
@@ -96,7 +103,8 @@
     "detail": "2 hab. 122 m²",
     "description": "\nCASA 4 VIENTOS EN ZONA SANT MUÇ\nCasa unifamiliar muy bien situada, en urbanización Sant Muç. Solar de 390 m² y superficie construida de...\n",
     "meters": "122",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/f1/54/bd/960067368.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/f1/54/bd/960067368.jpg",
+    "hasGarage": true
   },
   {
     "id": 97411447,
@@ -111,7 +119,8 @@
     "detail": "3 hab. 250 m²",
     "description": "\nEste casa / chalet se encuentra en Calle José Carmona, 29010, malaga, malaga, situado en el distrito de teatinos. Es un casa / chalet, co...\n",
     "meters": "250",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/00/7b/11/978640566.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/00/7b/11/978640566.jpg",
+    "hasGarage": false
   },
   {
     "id": 97515650,
@@ -124,7 +133,8 @@
     "detail": "4 hab. 200 m²",
     "description": "\nFantástica casa a 4 vientos.\nCasa ideal para una familia estar en plena naturaleza y cerca de ciudad.\nAl entrar en la parcela encontram...\n",
     "meters": "200",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/29/76/ba/981878640.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/29/76/ba/981878640.jpg",
+    "hasGarage": false
   },
   {
     "id": 97720021,
@@ -134,7 +144,8 @@
     "detail": "4 hab. 180 m²",
     "description": "\nTORRE EN CAN XIMELIS CONSTRUIDA AÑO 1.999 SOBRE 1.212M DE PARCELA CON PISCINA.\nVivienda a 4 vientos distribuida en dos plantas:\nSemi-sót...\n",
     "meters": "180",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/97/32/8e/988139757.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/97/32/8e/988139757.jpg",
+    "hasGarage": false
   },
   {
     "id": 97947364,
@@ -147,6 +158,7 @@
     "detail": "3 hab. 251 m²",
     "description": "\nEspectacular chalet en la zona de Intelhorce que dispone de una parcela de 250m2, la vivienda consta de 107 m2 útiles en las que se distr...\n",
     "meters": "251",
-    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/7e/6e/09/995901117.jpg"
+    "image": "https://img3.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/7e/6e/09/995901117.jpg",
+    "hasGarage": true
   }
 ]

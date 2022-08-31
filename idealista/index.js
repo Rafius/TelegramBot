@@ -21,8 +21,7 @@ app.post("/saveHouses", jsonParser, async (req, res) => {
 });
 
 const saveHouses = (houses) => {
-  let newHouses = [...houses, ...housesFile];
-
+  let newHouses = [...housesFile, ...houses];
   const housesGroupById = newHouses.reduce((acc, house) => {
     (acc[house.id] = acc[house.id] || []).push(house);
     return acc;
@@ -32,20 +31,23 @@ const saveHouses = (houses) => {
 
   newHouses = Object.values(housesGroupById)
     .map((houses) => {
+      if (houses.length === 1) return houses[0];
+
       const houseIsOnSale =
-        houses.at(-1).price.date === new Date().toLocaleDateString();
+        houses.at(-1).price[0].date === new Date().toLocaleDateString();
 
       if (!houseIsOnSale) return null;
 
-      const house = houses[0];
+      const house = houses.at(0);
 
-      const prices = houses.map((house) => house.price.price);
+      if (!house.hasGarage) house.hasGarage = houses.at(-1).hasGarage;
 
-      house.price = houses
-        .filter(({ price }, index) => {
-          return !prices.includes(price.price, index + 1);
-        })
-        .map((item) => item.price);
+      const prices = house.price?.map((house) => house.price);
+
+      const newHouse = houses.at(-1);
+
+      const isNewPrice = !prices.includes(newHouse.price[0].price);
+      if (isNewPrice) house.price.push(newHouse.price[0]);
 
       return house;
     })
